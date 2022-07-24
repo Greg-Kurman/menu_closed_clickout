@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lesson {
+            width: 400px;
+            height: 200px;
+            background-color: bisque;
+
+        }
+
+        .but {
+            width: 300px;
+            height: 100px;
+            margin: 0 50px;
+        }
+
+        .menu {
+            background-color: cornflowerblue;
+            width: 400px;
+            height: 400px;
+            display: none;
+            overflow: hidden;
+
+        }
+
+        ._active {
+            display: block;
+        }
+
+        .menu-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .menu-item {
+            display: block;
+            font-size: 30px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <div class="lesson">
+
+            <button class="but">Кликни сюда для открытия меню</button>
+
+            <div class="menu ">
+                <div class="menu-items">
+                    <div class="menu-item">page 1</div>
+                    <div class="menu-item">page 1</div>
+                    <div class="menu-item">page 1</div>
+                    <div class="menu-item">page 1</div>
+                    <div class="menu-item">page 1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const lesson = document.querySelector(".lesson");
+
+        const menu = document.querySelector('.menu');
+
+
+        document.addEventListener('click', showMenu);
+
+        function showMenu(e) {
+            if (e.target.closest('.but')) {
+                menu.classList.toggle('_active')
+            }
+            if (!e.target.closest('.lesson')) {
+                menu.classList.remove('_active')
+            }
+        }
+
+        document.addEventListener('keyup', closeMenu);
+
+        function closeMenu(e) {
+            console.log(e.code)
+            if (e.code === "Escape") {
+                menu.classList.remove('_active')
+            }
+        }
+    </script>
+</body>
+
+</html>
